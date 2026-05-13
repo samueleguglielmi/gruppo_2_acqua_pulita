@@ -1,0 +1,76 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-deep: var(--deep);
+  --color-aqua: var(--aqua);
+  --color-sand: var(--sand);
+  --color-algae: var(--algae);
+}
+
+:root {
+  --radius: 0.5rem;
+  --background: oklch(0.985 0.01 200);
+  --foreground: oklch(0.18 0.04 230);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.04 230);
+  --primary: oklch(0.42 0.09 220);
+  --primary-foreground: oklch(0.985 0.01 200);
+  --secondary: oklch(0.94 0.02 200);
+  --secondary-foreground: oklch(0.25 0.05 230);
+  --muted: oklch(0.95 0.015 210);
+  --muted-foreground: oklch(0.45 0.03 230);
+  --accent: oklch(0.72 0.13 195);
+  --accent-foreground: oklch(0.15 0.04 230);
+  --border: oklch(0.9 0.015 220);
+  --ring: oklch(0.55 0.1 210);
+  --deep: oklch(0.22 0.06 230);
+  --aqua: oklch(0.72 0.13 195);
+  --sand: oklch(0.92 0.04 80);
+  --algae: oklch(0.78 0.18 140);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.02em; }
+}
+
+@layer utilities {
+  .bg-water {
+    background:
+      radial-gradient(1200px 600px at 80% -10%, color-mix(in oklab, var(--aqua) 35%, transparent), transparent 60%),
+      radial-gradient(900px 500px at -10% 30%, color-mix(in oklab, var(--deep) 25%, transparent), transparent 60%),
+      linear-gradient(180deg, var(--background), color-mix(in oklab, var(--aqua) 8%, var(--background)));
+  }
+  .text-balance { text-wrap: balance; }
+}
